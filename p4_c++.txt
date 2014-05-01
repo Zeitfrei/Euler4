@@ -1,0 +1,55 @@
+/*
+*    Created by Zeitfrei on 01.05.2014
+*/
+
+    #include <iostream>
+
+    using namespace std;
+
+     int main()
+     {
+        int d1 = 999;
+        int result = 0;
+        int tempresult = 0;
+        int length = 0;
+        bool palindrom = false;
+        string fString, rString;
+        
+        //Multiplay 2 3-digit numbers from big to small
+        //one number*one number from 999-1
+        while(d1>0)
+        {
+            for(int i = 999; i > 0; i--)
+            {
+                palindrom = true;
+
+                tempresult = d1*i;
+    
+                //is result Palindrom?
+                // to String, reverse, compare, break 
+                
+                fString = to_string(tempresult);
+                length = fString.size();
+                
+                // palindrom initially true, if result not palindrom - palindrom = false
+                for ( int t = 0 ; t <= length/2 ; t++)
+                {
+                    if(fString[0+t] != fString[length-1-t])
+                        palindrom = false;
+                }
+                
+                // breaking of second number if palindrom found, result would only get smaller
+                if(palindrom)
+                {
+                    if(tempresult > result)
+                        result = tempresult;
+                    break;
+                }
+            }
+            d1--;
+        }
+        
+        cout << "The biggest Palindrom made from the product of two 3-digit numbers is " << result;
+
+     }     
+
